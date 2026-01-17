@@ -1,3 +1,4 @@
+<img width="200" height="200" alt="logo" src="https://github.com/user-attachments/assets/8f4b52dd-9ff1-4f7b-adf8-8ea54b32c950" />
 # CineAI – Film Öneri Sistemi
 
 CineAI, **içerik tabanlı** bir film öneri sistemidir. Kullanıcının seçtiği filme göre, film açıklamaları, türler ve anahtar kelimeler üzerinden benzer filmleri önerir.
