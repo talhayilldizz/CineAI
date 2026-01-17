@@ -5,7 +5,7 @@
 
 CineAI, **içerik tabanlı (content-based)** çalışan ve **Flask** altyapısı ile web arayüzüne sahip olan bir film öneri sistemidir. Kullanıcının seçtiği bir filme dayanarak; film açıklamaları, türler ve anahtar kelimeler üzerinden en benzer filmleri listeler.
 
-Bu projede **TF-IDF + Cosine Similarity** algoritmaları kullanılmış ve sonuçlar modern bir web arayüzü üzerinden sunulmuştur.
+Bu projede **Count Vectorizer + Cosine Similarity** algoritmaları kullanılmış ve sonuçlar modern bir web arayüzü üzerinden sunulmuştur.
 
 ---
 
@@ -36,8 +36,7 @@ Veri seti projede temizlenmiş ve işlenmiş haliyle kullanılmıştır.
 1. Film bilgileri birleştirilerek **tags** adlı metinsel bir özellik oluşturulur.
 2. Bu metinler:
 
-   * `CountVectorizer` veya
-   * `TfidfVectorizer`
+   * `CountVectorizer`
      kullanılarak sayısal vektörlere dönüştürülür.
 3. Filmler arasındaki benzerlik **Cosine Similarity** ile hesaplanır.
 4. En yüksek benzerliğe sahip 5 film film kullanıcıya önerilir.
