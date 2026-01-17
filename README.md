@@ -3,9 +3,9 @@
 
 # CineAI – Film Öneri Sistemi
 
-CineAI, **içerik tabanlı** bir film öneri sistemidir. Kullanıcının seçtiği filme göre, film açıklamaları, türler ve anahtar kelimeler üzerinden benzer filmleri önerir.
+CineAI, **içerik tabanlı (content-based)** çalışan ve **Flask** altyapısı ile web arayüzüne sahip olan bir film öneri sistemidir. Kullanıcının seçtiği bir filme dayanarak; film açıklamaları, türler ve anahtar kelimeler üzerinden en benzer filmleri listeler.
 
-Bu projede **TF-IDF + Cosine Similarity** kullanılarak filmler arasındaki benzerlik hesaplanmıştır.
+Bu projede **TF-IDF + Cosine Similarity** algoritmaları kullanılmış ve sonuçlar modern bir web arayüzü üzerinden sunulmuştur.
 
 ---
 
