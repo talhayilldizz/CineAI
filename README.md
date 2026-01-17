@@ -76,10 +76,10 @@ python run.py
 
 * Veri seti ve model dosyaları **ilk kurulumda manuel olarak oluşturulmalıdır**.
 ---
-<img width="889" height="294" alt="image" src="https://github.com/user-attachments/assets/18901c9d-b808-4ced-90e1-5c77c691590c" />
 
-<img width="658" height="170" alt="image" src="https://github.com/user-attachments/assets/df4a5238-9dfe-45c8-9288-436591afbbf0" />
+TF-IDF
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/18901c9d-b808-4ced-90e1-5c77c691590c" />
 
+Cosine Similarity
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/df4a5238-9dfe-45c8-9288-436591afbbf0" />
 
-
-⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
