@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center justify-content-center" style="height: 85vh;">
+    
+    <h1 style="font-size: 4rem; font-weight: 800; text-align: center; margin-bottom: 20px; letter-spacing: -2px;">
+        Aradığın Filmin <span style="color: var(--primary-cyan);">Adresi</span>
+    </h1>
+    <p class="fs-4 mb-5 text-center" style="opacity: 0.8; max-width: 700px; font-weight: 300;">
+        Yapay zeka destekli algoritmamızla, zevklerinize en uygun filmleri ışık hızında keşfedin.
+    </p>
+
+    <form action="/" method="POST" style="width: 100%; max-width: 650px;">
+        <div class="search-group">
+            <input type="text" name="movie_name" list="movies" class="custom-input" placeholder="Favori filminizi yazın..." autocomplete="off" required>
+            <button type="submit" class="search-btn">KEŞFET</button>
+        </div>
+        <datalist id="movies">
+            {% for movie in movie_list %}
+                <option value="{{ movie }}">
+            {% endfor %}
+        </datalist>
+    </form>
+
+</div>
+{% endblock %}

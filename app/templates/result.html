@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="padding-top: 60px;"></div>
+
+<div class="container pb-5">
+    
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="ai-box d-flex gap-4 align-items-start">
+                
+                <img src="{{ url_for('static', filename='ai-icon.png') }}" 
+                     alt="AI Chip" 
+                     class="ai-icon-img">
+                
+                <div class="w-100">
+                    <h5 class="text-uppercase fw-bold" style="font-size: 0.9rem; letter-spacing: 2px; color: var(--primary-purple);">CineDirector Yorumu</h5>
+                    <p id="ai-text" class="mb-0 fs-5" style="font-weight: 300; opacity: 0.9;">
+                        "Sonuçlar hazır. Merak ettiğin filme tıkla, yapay zeka yorumlasın."
+                    </p>
+                    
+                    <div id="loading-bar-container" class="mt-4 loading-bar-bg" style="display: none;">
+                        <div id="loading-bar-fill" class="loading-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-5">
+        <h3 style="font-weight: 300; letter-spacing: 1px;">
+            <strong style="font-weight: 800; color: white;">{{ selected_movie }}</strong> Benzerleri
+        </h3>
+    </div>
+
+    <div class="row justify-content-center g-4"> 
+        {% if movies %}
+            {% for movie in movies %}
+            <div class="col-6 col-md-4 col-lg-2"> 
+                
+                <div class="movie-card" 
+                     onclick="askGPT('{{ selected_movie }}', '{{ movie.title }}', this)">
+                    
+                    <div class="match-badge">
+                        %{{ 100 - (loop.index * 3) + 2 }} Uyum
+                    </div>
+
+                    <div style="flex-grow: 1;"></div>
+                    
+                    <h6 class="movie-title">
+                        {{ movie.title }}
+                    </h6>
+                    
+                    <div style="font-size: 0.8rem; padding: 8px 20px; border-radius: 50px; background: rgba(255,255,255,0.1); font-weight: 600; transition: 0.3s;">
+                        İNCELE
+                    </div>
+
+                    <div style="flex-grow: 1;"></div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center mt-5">
+                <h3>Üzgünüz, film bulunamadı.</h3>
+                <a href="/" class="btn btn-outline-light mt-3 px-4 rounded-pill">Tekrar Dene</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/" class="btn btn-outline-light px-5 py-3 rounded-pill fw-bold" style="border-width: 2px;">
+            YENİ ARAMA
+        </a>
+    </div>
+
+</div>
+
+<script>
+    function askGPT(userMovie, targetMovie, cardElement) {
+        const aiText = document.getElementById('ai-text');
+        const loaderContainer = document.getElementById('loading-bar-container');
+        const loaderFill = document.getElementById('loading-bar-fill');
+        
+        aiText.innerHTML = `<span style="color:var(--primary-cyan); font-weight:bold;">${targetMovie}</span> analiz ediliyor...`;
+        loaderContainer.style.display = "block";
+        setTimeout(() => { loaderFill.style.width = "60%"; }, 100);
+
+        document.querySelectorAll('.movie-card').forEach(el => {
+            el.classList.remove('active-card');
+            el.style.opacity = "0.5";
+        });
+        cardElement.classList.add('active-card');
+        cardElement.style.opacity = "1";
+
+        fetch('/get_ai_comment', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ user_movie: userMovie, target_movie: targetMovie }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            loaderFill.style.width = "100%";
+            setTimeout(() => { 
+                loaderContainer.style.display = "none"; 
+                loaderFill.style.width = "0%";
+            }, 500);
+            aiText.innerText = `"${data.comment}"`;
+        })
+        .catch((error) => {
+            console.error(error);
+            aiText.innerText = "Hata oluştu.";
+            loaderContainer.style.display = "none";
+        });
+    }
+</script>
+{% endblock %}
