@@ -19,7 +19,7 @@ def train_and_save_model():
     movies_df=pd.read_csv(csv_path)
 
     print("Vektörleştirme Yapılıyor Bu İşlen Uzun Sürebilir...")
-    cv=TfidfVectorizer(
+    cv=CountVectorizer(
         max_features=5000,
         stop_words='english',
         lowercase=True
