@@ -7,6 +7,8 @@ CineAI, **içerik tabanlı (content-based)** çalışan ve **Flask** altyapısı
 
 Bu projede **Count Vectorizer + Cosine Similarity** algoritmaları kullanılmış ve sonuçlar modern bir web arayüzü üzerinden sunulmuştur.
 
+Ayrıca sistem, öneri sonuçlarını daha anlaşılır hale getirmek için GPT destekli açıklayıcı yorumlama özelliğine sahiptir.
+
 ---
 
 ## Kullanılan Teknolojiler
@@ -15,6 +17,7 @@ Bu projede **Count Vectorizer + Cosine Similarity** algoritmaları kullanılmı�
 * Pandas
 * Scikit-learn
 * Flask
+* OpenAI GPT API
 * HTML / CSS
 * Pickle
 
@@ -49,6 +52,18 @@ Veri seti projede temizlenmiş ve işlenmiş haliyle kullanılmıştır.
 Bu nedenle `.pkl` dosyaları `.gitignore` içine eklenmiştir.
 
 ---
+
+## GPT Entegrasyonu
+
+CineAI projesinde, öneri sistemini daha etkileşimli ve anlaşılır hale getirmek amacıyla GPT entegrasyonu bulunmaktadır.
+
+Öneri süreci şu şekilde ilerler:
+
+1-Kullanıcı bir film seçer
+
+2-Sistem, içerik tabanlı algoritma ile benzer filmleri listeler
+
+3-Kullanıcı, önerilen filmlerden herhangi birine tıkladığında seçilen film ile başlangıçta izlenen film arasındaki benzerlik,GPT modeli tarafından doğal dilde yorumlanır
 
 ## Model Dosyalarını Nasıl Oluştururum?
 
